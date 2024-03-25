@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Francois+One&family=Roboto+Slab:wght@100;600;700&display=swap');
+  
+*{
+    margin: 0;
+}
+nav a{
+    text-decoration: none;
+    color: #333438;
+    text-align: center;
+    margin: 20px;
+}
+nav ul:nth-child(2) a{
+    color: #03949B;
+}
+nav ul:nth-child(3) a{
+    color: #D3701A;
+}
+nav ul:nth-child(4) a{
+    color: #AA181C;
+}
+nav ul:hover{
+    transform: scale(110%);
+    transition: 300ms;
+    filter: brightness(150%);
+}
+nav{
+    font-family: "Francois One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+    text-transform: uppercase;
+
+    width: 100%;
+    margin: 0;
+    position: absolute;
+    box-shadow: #000 0px 0px 10px inset;
+    height: 140px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    background-color: #ffffff;
+    border-bottom: 10px solid;
+    border-image:   linear-gradient(to left, #333438 25%, #AA181C 25%, #AA181C 50%,#D3701A 50%, #D3701A 75%, #03949B 75%) 5;
+}
+nav img{
+    height: 80px;
+    margin-left: 40px;
+}
+div.page{
+    margin: 0 15% ;
+    background-color: #ffffff;
+    box-shadow: #000 0px 0px 5px ;
+    padding: 5%;
+}
+div.bord{
+    background-color: #ffffff;
+    padding-top: 100px;
+}
+h1{
+    padding: 0 15px;
+    color: #333438;
+    border-left: 10px solid #03949B;
+}
+h2{
+    padding: 15px 0;
+    color: #333438;
+    border-bottom: 5px solid #03949B;
+}
