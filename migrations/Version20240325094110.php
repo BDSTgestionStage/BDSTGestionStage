@@ -20,7 +20,7 @@ final class Version20240325094110 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE etudiant (id INT AUTO_INCREMENT NOT NULL, etu_annee INT NOT NULL, PER_ID INT DEFAULT NULL, UNIQUE INDEX UNIQ_717E22E37BB1A10C (PER_ID), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE etudiant (id INT AUTO_INCREMENT NOT NULL, etu_annee VARCHAR(4) NOT NULL, PER_ID INT DEFAULT NULL, UNIQUE INDEX UNIQ_717E22E37BB1A10C (PER_ID), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE etudiant ADD CONSTRAINT FK_717E22E37BB1A10C FOREIGN KEY (PER_ID) REFERENCES personne (id)');
     }
 
