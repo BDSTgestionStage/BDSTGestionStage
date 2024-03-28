@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
     <title>Document</title>
     <script src="https://kit.fontawesome.com/635d338a3f.js" crossorigin="anonymous"></script>
 </head>
 <div>
     <nav>
-        <a href="#"><img src="image/Logo.png" alt=""></a>
+        <a href="#"><img src="../public/image/Logo.png" alt=""></a>
         <ul><a href="#">Stages</a></ul>
         <ul><a href="#">Éleve</a></ul>
         <ul><a href="#">Entreprise</a></ul>
@@ -19,3 +19,208 @@
 </div>
 <div class="bord">
 <div class="page">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Francois+One&family=Roboto+Slab:wght@100;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Francois+One&family=Roboto+Slab:wght@100;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+*{
+    margin: 0;
+}
+nav a{
+    text-decoration: none;
+    color: #333438;
+    text-align: center;
+    margin: 20px;
+}
+nav ul:nth-child(2) a{
+    color: #03949B;
+}
+nav ul:nth-child(3) a{
+    color: #D3701A;
+}
+nav ul:nth-child(4) a{
+    color: #AA181C;
+}
+nav ul:hover{
+    transform: scale(110%);
+    transition: 300ms;
+    filter: brightness(150%);
+}
+nav{
+    font-family: "Francois One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+    text-transform: uppercase;
+
+    width: 100%;
+    margin: 0;
+    position: absolute;
+    box-shadow: #000 0px 0px 10px inset;
+    height: 140px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    background-color: #ffffff;
+    border-bottom: 10px solid;
+    border-image:   linear-gradient(to left, #333438 25%, #AA181C 25%, #AA181C 50%,#D3701A 50%, #D3701A 75%, #03949B 75%) 5;
+}
+nav img{
+    height: 80px;
+    margin-left: 40px;
+}
+div.page{
+    margin: 0 15% ;
+    background-color: #ffffff;
+    box-shadow: #000 0px 0px 5px ;
+    padding: 5%;
+}
+div.bord{
+    background-color: #ffffff;
+    padding-top: 100px;
+}
+h1{
+    padding: 0 15px;
+    margin: 10px 0;
+    color: #333438;
+    border-left: 10px solid #03949B;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+h2{
+    padding: 15px 0;
+    color: #333438;
+    border-bottom: 5px solid #03949B;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.page{
+    background-image: url(./image/bg.png);
+    background-size:contain;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+}
+
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 5px;
+    color: #fff; 
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .login-btn {
+    width: 20%;
+    padding: 10px 20px;
+    background-color: #03949B; /* Adjust to match your primary color */
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .login-btn:hover {
+    background-color: #03949B; /* Slightly darker shade on hover */
+  }
+  
+  table{
+    width: 100%;
+    margin: 0;
+    box-shadow: #0000002b 0px 0px 20px 20px;
+  }
+  table td, table th{
+    border-right: solid 1px #00000097;
+    margin: 0;
+
+  }
+
+  table tr:nth-child(2n+2){
+    background-color: #33343823;
+  }
+  table td:nth-child(1), table td:nth-child(4){
+    text-align: center;
+  }
+  table td:nth-child(4), table th:nth-child(4){
+    border: none;
+  }
+  .lock, .edit, .del, .return {
+    text-align: center;
+    background-color: #000;
+    padding: 10px;
+    border-radius: 10%;
+    margin: 1px;
+    height: 25px;
+    width: 25px;
+  }
+  .lock i, .edit i, .del i, .new i, .return i{
+    height: 25px;
+    width: 25px;
+  }
+  .lock{
+    background-color: #03949B;
+    color: #fff;
+  }
+  .edit{
+    background-color: #e79600;
+    color: #fff;
+  }
+  .del{
+    background-color: #e70000;
+    color: #fff;
+  }
+  .return{
+    background-color: #03949B;
+    color: #fff;
+  }
+  .new{
+    background-color: #23b100;
+    color: #fff; 
+    text-align: center;
+    padding: 10px;
+    border-radius: 10%;
+    height: 25px;
+    width: 25px;
+    margin-top: 20%;
+  }
+  .newdiv{
+    margin: 40px;
+  }
+  .btns{
+    border:none; 
+    background-color: #0000;
+  }
+  .sousbtn{
+    margin: 30px 0;
+    display: flex;
+  }
+  .editbtn{
+    width: 10%;
+    margin: 30px 0;
+  }
+</style>
