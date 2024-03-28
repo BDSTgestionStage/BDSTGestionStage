@@ -42,7 +42,7 @@ class Profil
      */
     private $RES_ACCORD;
 
-    public function getPERID(): ?Personne
+    public function getPER_ID(): ?int
     {
         return $this->PER_ID;
     }
