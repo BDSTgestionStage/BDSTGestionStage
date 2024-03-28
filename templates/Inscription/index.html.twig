@@ -1,0 +1,17 @@
+{# templates/inscription/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    <h1>Inscription</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.identifiant) }}
+     
+        {{ form_row(form.uti_password) }}
+
+        
+    {{ form_end(form) }}
+{% endblock %}
