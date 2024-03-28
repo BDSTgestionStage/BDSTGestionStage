@@ -1,0 +1,18 @@
+<table>
+    <thead>
+        <tr>
+            <th>Nom de l'entreprise</th>
+            <th>Ville de l'entreprise</th>
+            <th>Spécialité</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entreprise in entreprises %}
+            <tr>
+                <td>{{ entreprise.getENTNOM() }}</td>
+                <td>{{ entreprise.getENTVILLE() }}</td>
+                <td>{{ entreprise.getENTSPECIALITE() }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
