@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block body %}
+    <h1>Profil</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>PRO_FONCTION</th>
+                <td>{{ profil.PROFONCTION }}</td>
+            </tr>
+            <tr>
+                <th>ENV_ACCORD</th>
+                <td>{{ profil.ENVACCORD ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>JUR_ANNEE</th>
+                <td>{{ profil.JURANNEE }}</td>
+            </tr>
+            <tr>
+                <th>TUT_ACCORD</th>
+                <td>{{ profil.TUTACCORD ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>RES_ACCORD</th>
+                <td>{{ profil.RESACCORD ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_profil_index') }}">back to list</a>
+
+    <a href="{{ path('app_profil_edit', {'PER_ID': profil.PER_ID}) }}">edit</a>
+
+    {{ include('profil/_delete_form.html.twig') }}
+{% endblock %}

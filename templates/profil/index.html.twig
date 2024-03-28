@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil index{% endblock %}
+
+{% block body %}
+    <h1>Profil index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>PRO_FONCTION</th>
+                <th>ENV_ACCORD</th>
+                <th>JUR_ANNEE</th>
+                <th>TUT_ACCORD</th>
+                <th>RES_ACCORD</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for profil in profils %}
+            <tr>
+                <td>{{ profil.PROFONCTION }}</td>
+                <td>{{ profil.ENVACCORD ? 'Yes' : 'No' }}</td>
+                <td>{{ profil.JURANNEE }}</td>
+                <td>{{ profil.TUTACCORD ? 'Yes' : 'No' }}</td>
+                <td>{{ profil.RESACCORD ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_profil_show', {'PER_ID': profil.PER_ID}) }}">show</a>
+                    <a href="{{ path('app_profil_edit', {'PER_ID': profil.PER_ID}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_profil_new') }}">Create new</a>
+{% endblock %}
