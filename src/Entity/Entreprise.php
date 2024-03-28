@@ -1,9 +1,9 @@
 <?php
-// src/Entity/Entreprise.php
 
 namespace App\Entity;
 
-use App\Repository\EntrepriseRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -47,6 +47,17 @@ class Entreprise
      * @ORM\Column(type="string", length=5)
      */
     private $ENT_CP;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Formation::class, inversedBy="entreprises")
+     * @ORM\JoinTable(name="entreprise_formation")
+     */
+    private $formations;
+
+    public function __construct()
+    {
+        $this->formations = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -121,6 +132,30 @@ class Entreprise
     public function setENTCP(string $ENT_CP): self
     {
         $this->ENT_CP = $ENT_CP;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Formation[]
+     */
+    public function getFormations(): Collection
+    {
+        return $this->formations;
+    }
+
+    public function addFormation(Formation $formation): self
+    {
+        if (!$this->formations->contains($formation)) {
+            $this->formations[] = $formation;
+        }
+
+        return $this;
+    }
+
+    public function removeFormation(Formation $formation): self
+    {
+        $this->formations->removeElement($formation);
 
         return $this;
     }
