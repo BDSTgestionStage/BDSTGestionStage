@@ -13,9 +13,10 @@ class Etudiant
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\OneToOne(targetEntity="Personne")
+     * @ORM\JoinColumn(name="per_id", referencedColumnName="id")
      */
-    private $id;
+    private $per_id;
 
     /**
      * @ORM\Column(type="integer")
@@ -30,7 +31,7 @@ class Etudiant
 
     public function getId(): ?int
     {
-        return $this->id;
+        return $this->per_id;
     }
 
     public function getETUANNEE(): ?int
@@ -53,6 +54,18 @@ class Etudiant
     public function setFormation(?Formation $formation): self
     {
         $this->formation = $formation;
+
+        return $this;
+    }
+
+    public function getPerId(): ?Personne
+    {
+        return $this->per_id;
+    }
+
+    public function setPerId(?Personne $per_id): self
+    {
+        $this->per_id = $per_id;
 
         return $this;
     }
