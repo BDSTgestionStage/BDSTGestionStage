@@ -54,6 +54,11 @@ class Entreprise
      */
     private $formations;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $site;
+
     public function __construct()
     {
         $this->formations = new ArrayCollection();
@@ -156,6 +161,18 @@ class Entreprise
     public function removeFormation(Formation $formation): self
     {
         $this->formations->removeElement($formation);
+
+        return $this;
+    }
+
+    public function getSite(): ?string
+    {
+        return $this->site;
+    }
+
+    public function setSite(?string $site): self
+    {
+        $this->site = $site;
 
         return $this;
     }
