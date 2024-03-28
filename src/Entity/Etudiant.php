@@ -39,7 +39,7 @@ class Etudiant
         return $this->ETU_ANNEE;
     }
 
-    public function setETUANNEE(int $ETU_ANNEE): self
+    public function setETUANNEE(string $ETU_ANNEE): self
     {
         $this->ETU_ANNEE = $ETU_ANNEE;
 
@@ -58,7 +58,7 @@ class Etudiant
         return $this;
     }
 
-    public function getPerId(): ?Personne
+    public function getPer_Id(): ?Personne
     {
         return $this->per_id;
     }
