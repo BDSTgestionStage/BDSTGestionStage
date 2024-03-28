@@ -20,7 +20,7 @@ final class Version20240325100907 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE profil (pro_fonction VARCHAR(255) NOT NULL, env_accord TINYINT(1) NOT NULL, jur_annee INT NOT NULL, tut_accord TINYINT(1) NOT NULL, res_accord TINYINT(1) NOT NULL, PER_ID INT NOT NULL, PRIMARY KEY(PER_ID)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE profil (pro_fonction VARCHAR(255) NOT NULL, env_accord TINYINT(1) NOT NULL, jur_annee VARCHAR(4) DEFAULT NULL, tut_accord TINYINT(1) NOT NULL, res_accord TINYINT(1) NOT NULL, PER_ID INT NOT NULL, PRIMARY KEY(PER_ID)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE profil ADD CONSTRAINT FK_E6D6B2977BB1A10C FOREIGN KEY (PER_ID) REFERENCES personne (id)');
         $this->addSql('ALTER TABLE personne DROP per_fonction');
     }
