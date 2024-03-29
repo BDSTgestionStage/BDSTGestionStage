@@ -105,7 +105,7 @@ h2{
   }
   
   input[type="text"],
-  input[type="password"] {
+  input[type="UTI_password"] {
     width: 50%;
     padding: 10px;
     border: 1px solid #ccc;

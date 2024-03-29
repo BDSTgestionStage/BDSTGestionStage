@@ -67,9 +67,9 @@ class LoginController extends AbstractController
             if (password_verify($_POST["UTI_password"], $motdepasse)) {
                 $_SESSION['isConnected'] = true;
                 return $this->redirectToRoute('Stage');
-            } else {return $this->render('login/BDST_PageConnexion.html.twig');}
+            } else {return $this->render('BDST_PageConnexion.html.twig');}
         } else {
-            return $this->render('login/BDST_PageConnexion.html.twig');
+            return $this->render('BDST_PageConnexion.html.twig');
         }
     }
 }
