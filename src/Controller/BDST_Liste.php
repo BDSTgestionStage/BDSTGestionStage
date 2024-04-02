@@ -25,4 +25,29 @@ class BDST_Liste extends AbstractController
             'entreprises' => $entreprises,
         ]);
     }
+    public function index(EntityManagerInterface $entityManager): Response
+    {
+        // Récupérer toutes les entreprises
+        $entreprises = $entityManager->getRepository(Entreprise::class)->findAll();
+
+        $tuteurs = [];
+        $personnesEnvAccord = [];
+        foreach ($entreprises as $entreprise) {
+            foreach ($entreprise->getPersonnes() as $personne) {
+                $profil = $personne->getProfil();
+                if ($profil && $profil->getTUTACCORD()) {
+                    // Ajoutez cette personne à la liste des tuteurs
+                    $tuteurs[] = $personne;
+                }
+                if ($profil && $profil->getENVACCORD()) {
+                    // Ajouter cette personne à la liste des personnes avec ENV_ACCORD à true
+                    $personnesEnvAccord[] = $personne;
+                }
+            }
+        }
+
+    }
+
+    
+
 }
