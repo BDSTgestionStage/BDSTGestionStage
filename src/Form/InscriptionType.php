@@ -16,7 +16,6 @@ class InscriptionType extends AbstractType
     {
         $builder
             ->add('identifiant', TextType::class)
-            ->add('role',TextType::class)
             ->add('uti_password', PasswordType::class)
             ->add('submit', SubmitType::class, ['label' => 'S\'inscrire'])
         ;
