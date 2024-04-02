@@ -1,5 +1,4 @@
 <?php
-// src/Entity/Formation.php
 
 namespace App\Entity;
 
@@ -25,13 +24,13 @@ class Formation
     private $FOR_LIBELLE;
 
     /**
-     * @ORM\OneToMany(targetEntity="Etudiant", mappedBy="formation")
+     * @ORM\ManyToMany(targetEntity=Entreprise::class, mappedBy="formations")
      */
-    private $etudiants;
+    private $entreprises;
 
     public function __construct()
     {
-        $this->etudiants = new ArrayCollection();
+        $this->entreprises = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -52,30 +51,27 @@ class Formation
     }
 
     /**
-     * @return Collection|Etudiant[]
+     * @return Collection|Entreprise[]
      */
-    public function getEtudiants(): Collection
+    public function getEntreprises(): Collection
     {
-        return $this->etudiants;
+        return $this->entreprises;
     }
 
-    public function addEtudiant(Etudiant $etudiant): self
+    public function addEntreprise(Entreprise $entreprise): self
     {
-        if (!$this->etudiants->contains($etudiant)) {
-            $this->etudiants[] = $etudiant;
-            $etudiant->setFormation($this);
+        if (!$this->entreprises->contains($entreprise)) {
+            $this->entreprises[] = $entreprise;
+            $entreprise->addFormation($this);
         }
 
         return $this;
     }
 
-    public function removeEtudiant(Etudiant $etudiant): self
+    public function removeEntreprise(Entreprise $entreprise): self
     {
-        if ($this->etudiants->removeElement($etudiant)) {
-            // set the owning side to null (unless already changed)
-            if ($etudiant->getFormation() === $this) {
-                $etudiant->setFormation(null);
-            }
+        if ($this->entreprises->removeElement($entreprise)) {
+            $entreprise->removeFormation($this);
         }
 
         return $this;
