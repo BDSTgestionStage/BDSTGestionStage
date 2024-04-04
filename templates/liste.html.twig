@@ -52,6 +52,14 @@
                         {% endif %}
                     {% endfor %}
                 </td>
+                <td>
+                    {% for formation in entreprise.getFormations() %}
+                        {{ formation.getForLibelle() }}
+                        {% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+                
+
 
             </tr>
         {% endfor %}
