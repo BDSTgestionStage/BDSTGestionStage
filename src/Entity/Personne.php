@@ -111,4 +111,15 @@ class Personne
 
         return $this;
     }
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Profil", mappedBy="personne")
+     */
+    private $profil;
+
+    public function getProfil(): ?Profil
+    {
+        return $this->profil;
+    }
+
+    
 }
