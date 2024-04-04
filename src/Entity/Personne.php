@@ -1,8 +1,9 @@
 <?php
-// src/Entity/Personne.php
+
 
 namespace App\Entity;
-
+use App\Repository\PersonneRepository;
+use App\Entity\Entreprise;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -15,35 +16,33 @@ class Personne
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\Column(type="string", length=38)
      */
-    private $PER_NOM;
-
-  
+    protected $PER_NOM;
 
     /**
      * @ORM\Column(type="string", length=38)
      */
-    private $PER_PRENOM;
+    protected $PER_PRENOM;
 
     /**
      * @ORM\ManyToOne(targetEntity=Entreprise::class)
      * @ORM\JoinColumn(name="ENT_ID", referencedColumnName="id")
      */
-    private $entreprise;
+    protected $entreprise;
 
     /**
      * @ORM\Column(type="string", length=10, nullable=true)
      */
-    private $telephone;
+    protected $telephone;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $email;
+    protected $email;
 
     public function getId(): ?int
     {
@@ -61,8 +60,6 @@ class Personne
 
         return $this;
     }
-
-  
 
     public function getPERPRENOM(): ?string
     {
