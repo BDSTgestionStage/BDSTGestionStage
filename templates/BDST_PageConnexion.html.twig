@@ -1,0 +1,13 @@
+{ {% block head %}{% include 'index.html' %}{% endblock %} }
+{% block body %}
+
+        <form method="post">
+            <label for="username">Identifiant :</label>
+            <input type="text" id="identifiant" name="identifiant" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+        <button type="submit">login</button>
+    </form>
+{% endblock %}
