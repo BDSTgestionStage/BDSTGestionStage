@@ -58,7 +58,14 @@
                         {% if not loop.last %}, {% endif %}
                     {% endfor %}
                 </td>
+                <td>
+                    {% for etudiant in etudiantsParEntreprise[entreprise.getId()] %}
+                        {{ etudiant.getPERNOM() }} {{ etudiant.getPERPRENOM() }}
+                        {% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
                 
+
 
 
             </tr>

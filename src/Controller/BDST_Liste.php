@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Entreprise;
+use App\Entity\Etudiant;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,42 +14,37 @@ class BDST_Liste extends AbstractController
     /**
      * @Route("/liste", name="liste")
      */
-    public function liste(): Response
-    {
-        // Récupérer le repository de l'entité Entreprise
-        $entrepriseRepository = $this->getDoctrine()->getRepository(Entreprise::class);
-
-        // Récupérer toutes les entreprises
-        $entreprises = $entrepriseRepository->findAll();
-
-        // Passer les entreprises à la vue pour affichage
-        return $this->render('liste.html.twig', [
-            'entreprises' => $entreprises,
-        ]);
-    }
-    public function index(EntityManagerInterface $entityManager): Response
+    public function liste(EntityManagerInterface $entityManager): Response
     {
         // Récupérer toutes les entreprises
         $entreprises = $entityManager->getRepository(Entreprise::class)->findAll();
 
-        $tuteurs = [];
-        $personnesEnvAccord = [];
+        // Tableau pour stocker les étudiants associés à chaque entreprise
+        $etudiantsParEntreprise = [];
+
+        // Parcourir chaque entreprise
         foreach ($entreprises as $entreprise) {
-            foreach ($entreprise->getPersonnes() as $personne) {
-                $profil = $personne->getProfil();
-                if ($profil && $profil->getTUTACCORD()) {
-                    // Ajoutez cette personne à la liste des tuteurs
-                    $tuteurs[] = $personne;
-                }
-                if ($profil && $profil->getENVACCORD()) {
-                    // Ajouter cette personne à la liste des personnes avec ENV_ACCORD à true
-                    $personnesEnvAccord[] = $personne;
+            // Récupérer les personnes associées à cette entreprise
+            $personnes = $entreprise->getPersonnes();
+
+            // Filtrer uniquement les personnes qui sont des étudiants
+            $etudiants = [];
+            foreach ($personnes as $personne) {
+                // Vérifier si la personne est un étudiant en recherchant son ID dans la table Etudiant
+                $etudiant = $entityManager->getRepository(Etudiant::class)->findOneBy(['per_id' => $personne->getId()]);
+                if ($etudiant) {
+                    $etudiants[] = $personne;
                 }
             }
+
+            // Stocker les étudiants associés à cette entreprise dans le tableau
+            $etudiantsParEntreprise[$entreprise->getId()] = $etudiants;
         }
 
+        // Passer les entreprises et les étudiants associés à chaque entreprise à la vue pour affichage
+        return $this->render('liste.html.twig', [
+            'entreprises' => $entreprises,
+            'etudiantsParEntreprise' => $etudiantsParEntreprise,
+        ]);
     }
-
-    
-
 }
