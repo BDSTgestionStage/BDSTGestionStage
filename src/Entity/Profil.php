@@ -12,10 +12,16 @@ class Profil
 {
     /**
      * @ORM\Id()
-     * @ORM\OneToOne(targetEntity="Personne")
+     * @ORM\OneToOne(targetEntity="App\Entity\Personne")
      * @ORM\JoinColumn(name="PER_ID", referencedColumnName="id")
      */
-    private $PER_ID;
+    private $personne;
+
+    public function getPersonne(): ?Personne
+    {
+        return $this->personne;
+    }
+
 
     /**
      * @ORM\Column(type="string", length=255)

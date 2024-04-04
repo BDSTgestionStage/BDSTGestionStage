@@ -63,4 +63,20 @@ class PersonneRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+
+public function getEtudiantsByEntreprise(int $entrepriseId): array
+{
+    $entityManager = $this->getEntityManager();
+
+    $query = $entityManager->createQuery(
+        'SELECT p.per_nom AS personne_nom, p.per_prenom AS personne_prenom
+        FROM App\Entity\Entreprise e
+        JOIN App\Entity\Personne p WITH e.id = p.ENT_ID
+        JOIN App\Entity\Etudiant etu WITH p.id = etu.PER_ID
+        WHERE e.id = :entrepriseId'
+    )->setParameter('entrepriseId', $entrepriseId);
+
+    return $query->getResult();
+}
 }
