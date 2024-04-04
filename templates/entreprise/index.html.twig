@@ -1,45 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Entreprise index{% endblock %}
+
+
+{% block title %}Entreprises{% endblock %}
 
 {% block body %}
-    <h1>Entreprise index</h1>
-
+{% include '/index.html' %}
+    
+    <h1>Entreprises </h1>
     <table class="table">
+
         <thead>
             <tr>
-                <th>Id</th>
-                <th>ENT_NOM</th>
-                <th>ENT_VILLE</th>
-                <th>ENT_PAYS</th>
-                <th>ENT_SPECIALITE</th>
-                <th>ENT_ADRESSE</th>
-                <th>ENT_CP</th>
-                <th>actions</th>
+                <th>Nom de l'entreprise</th>
+                <th>Ville</th>
+                <th>Spécialité</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
+    
+            <tr><div class="newdiv"><a class="new" href="{{ path('app_entreprise_new') }}"><i class="fa-solid fa-plus"></i></a></div></tr>
         {% for entreprise in entreprises %}
             <tr>
-                <td>{{ entreprise.id }}</td>
                 <td>{{ entreprise.ENTNOM }}</td>
-                <td>{{ entreprise.ENTVILLE }}</td>
-                <td>{{ entreprise.ENTPAYS }}</td>
+                <td>{{ entreprise.ENTADRESSE }}
+                <br>{{ entreprise.ENTVILLE }}
+                <br>{{ entreprise.ENTCP }}
+                <br>{{ entreprise.ENTPAYS }}</td>
                 <td>{{ entreprise.ENTSPECIALITE }}</td>
-                <td>{{ entreprise.ENTADRESSE }}</td>
-                <td>{{ entreprise.ENTCP }}</td>
                 <td>
-                    <a href="{{ path('app_entreprise_show', {'id': entreprise.id}) }}">show</a>
-                    <a href="{{ path('app_entreprise_edit', {'id': entreprise.id}) }}">edit</a>
+                    <a class="lock" href="{{ path('app_entreprise_show', {'id': entreprise.id}) }}"><i class="fa-solid fa-eye"></i></a>
+                    <a class="edit" href="{{ path('app_entreprise_edit', {'id': entreprise.id}) }}"><i class="fa-solid fa-pen"></i></a>
+                    <a class="del" href="{{ path('app_entreprise_edit', {'id': entreprise.id}) }}"><i class="fa-solid fa-trash"></i></a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">no records found</td>
+                <td colspan="4">Pas d'entreprise</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_entreprise_new') }}">Create new</a>
 {% endblock %}
