@@ -6,18 +6,31 @@ use App\Entity\Entreprise;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class EntrepriseType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('ENT_NOM')
-            ->add('ENT_VILLE')
-            ->add('ENT_PAYS')
-            ->add('ENT_SPECIALITE')
-            ->add('ENT_ADRESSE')
-            ->add('ENT_CP')
+            ->add('ENT_NOM', TextType::class, [
+                'label' => 'Nom de l\'entreprise'
+            ])
+            ->add('ENT_SPECIALITE', TextType::class, [
+                'label' => 'Spécialité'
+            ])
+            ->add('ENT_ADRESSE', TextType::class, [
+                'label' => 'Adresse'
+            ])
+            ->add('ENT_CP', TextType::class, [
+                'label' => 'Code postal'
+            ])
+            ->add('ENT_VILLE', TextType::class, [
+                'label' => 'Ville'
+            ])
+            ->add('ENT_PAYS', TextType::class, [
+                'label' => 'Pays'
+            ])
         ;
     }
 
