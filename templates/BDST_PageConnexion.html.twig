@@ -1,13 +1,13 @@
-{ {% block head %}{% include 'index.html' %}{% endblock %} }
+{% block head %}{% include 'index.html' %}{% endblock %} 
 {% block body %}
-
+<div class="connexion">
         <form method="post">
             <label for="username">Identifiant :</label>
             <input type="text" id="identifiant" name="identifiant" required>
-
+  <br><br>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
-
-        <button type="submit">login</button>
+  <br><br>
+        <button type="submit" class="login-btn">login</button>
     </form>
-{% endblock %}
+</div>{% endblock %}

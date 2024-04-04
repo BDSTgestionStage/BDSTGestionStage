@@ -30,6 +30,9 @@
                 <br>{{ entreprise.ENTPAYS }}</td>
                 <td>{{ entreprise.ENTSPECIALITE }}</td>
                 <td>
+                {% if entreprise.SITE is not null and entreprise.SITE matches '/^https?\\/\\/.+$/' %}
+                    <a class="inte" href="{{ entreprise.SITE }}"><i class="fa-solid fa-globe"></i></a>
+                {% endif %}
                     <a class="lock" href="{{ path('app_entreprise_show', {'id': entreprise.id}) }}"><i class="fa-solid fa-eye"></i></a>
                     <a class="edit" href="{{ path('app_entreprise_edit', {'id': entreprise.id}) }}"><i class="fa-solid fa-pen"></i></a>
                     <a class="del" href="{{ path('app_entreprise_edit', {'id': entreprise.id}) }}"><i class="fa-solid fa-trash"></i></a>
