@@ -1,11 +1,17 @@
+{# templates/utilisateur/new.html.twig #}
+
 {% extends 'base.html.twig' %}
 
-{% block title %}New Utilisateur{% endblock %}
+{% block title %}Créer un nouvel utilisateur{% endblock %}
 
 {% block body %}
-    <h1>Create new Utilisateur</h1>
+    <h1>Créer un nouvel utilisateur</h1>
 
-    {{ include('utilisateur/_form.html.twig') }}
+    {{ form_start(form) }}
+        {{ form_row(form.identifiant) }}
+        {{ form_row(form.UTI_password) }}
+        {{ form_row(form.roles) }} {# Utilisez un champ de formulaire approprié pour les rôles #}
 
-    <a href="{{ path('app_utilisateur_index') }}">back to list</a>
+        <button type="submit" class="btn btn-primary">Créer</button>
+    {{ form_end(form) }}
 {% endblock %}
