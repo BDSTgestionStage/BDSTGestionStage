@@ -1,4 +1,5 @@
-
+{% block head %}{% include 'index.html' %}{% endblock %} 
+{% block body %}
 <div class="connexion">
         <form method="post">
             <label for="username">Identifiant :</label>
@@ -9,4 +10,4 @@
   <br><br>
         <button type="submit" class="login-btn">login</button>
     </form>
-</div>
+</div>{% endblock %}

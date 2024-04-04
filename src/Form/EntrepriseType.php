@@ -17,7 +17,7 @@ class EntrepriseType extends AbstractType
                 'label' => 'Nom de l\'entreprise'
             ])
             ->add('ENT_SPECIALITE', TextType::class, [
-                'label' => 'Spécialité'
+                'label' => 'Activité'
             ])
             ->add('ENT_ADRESSE', TextType::class, [
                 'label' => 'Adresse'
@@ -30,6 +30,9 @@ class EntrepriseType extends AbstractType
             ])
             ->add('ENT_PAYS', TextType::class, [
                 'label' => 'Pays'
+            ])
+            ->add('SITE', TextType::class, [
+                'label' => 'Site'
             ])
         ;
     }
