@@ -62,6 +62,7 @@ class Entreprise
     public function __construct()
     {
         $this->formations = new ArrayCollection();
+        $this->personnes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -175,5 +176,18 @@ class Entreprise
         $this->site = $site;
 
         return $this;
+    }
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Personne", mappedBy="entreprise")
+     */
+    private $personnes;
+
+    /**
+     * @return Collection|Personne[]
+     */
+    public function getPersonnes(): Collection
+    {
+        return $this->personnes;
     }
 }

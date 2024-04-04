@@ -38,6 +38,43 @@
                 <td>{{ entreprise.getENTNOM() }}</td>
                 <td>{{ entreprise.getENTVILLE() }}</td>
                 <td>{{ entreprise.getENTSPECIALITE() }}</td>
+                <td>
+                    {% for personne in entreprise.getPersonnes() %}
+                        {% if personne.getProfil() and personne.getProfil().getTUTACCORD() %}
+                            {{ personne.getPERNOM() }} {{ personne.getPERPRENOM() }}<br>
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for personne in entreprise.getPersonnes() %}
+                        {% if personne.getProfil() and personne.getProfil().getENVACCORD() %}
+                            {{ personne.getPERNOM() }} {{ personne.getPERPRENOM() }}<br>
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for formation in entreprise.getFormations() %}
+                        {{ formation.getForLibelle() }}
+                        {% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for etudiant in etudiantsParEntreprise[entreprise.getId()] %}
+                        {{ etudiant.getPERNOM() }} {{ etudiant.getPERPRENOM() }}
+                        {% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for personne in entreprise.getPersonnes() %}
+                        {% if personne.getProfil() and personne.getProfil().getJurAnnee() %}
+                            {{ personne.getPERNOM() }} {{ personne.getPERPRENOM() }} ({{ personne.getProfil().getJurAnnee() }})<br>
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                
+
+
+
             </tr>
         {% endfor %}
     </tbody>

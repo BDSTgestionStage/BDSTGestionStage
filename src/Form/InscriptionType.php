@@ -29,3 +29,4 @@ class InscriptionType extends AbstractType
         ]);
     }
 }
+

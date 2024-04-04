@@ -28,7 +28,7 @@ class UtilisateurController extends AbstractController
     /**
      * @Route("/new", name="app_utilisateur_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, UtilisateurRepository $utilisateurRepository): Response
+    public function new(Request $request, UtilisateurRepository $utilisateurRepository ): Response
     {
         $utilisateur = new Utilisateur();
         $form = $this->createForm(UtilisateurType::class, $utilisateur);
