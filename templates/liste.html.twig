@@ -64,6 +64,13 @@
                         {% if not loop.last %}, {% endif %}
                     {% endfor %}
                 </td>
+                <td>
+                    {% for personne in entreprise.getPersonnes() %}
+                        {% if personne.getProfil() and personne.getProfil().getJurAnnee() %}
+                            {{ personne.getPERNOM() }} {{ personne.getPERPRENOM() }} ({{ personne.getProfil().getJurAnnee() }})<br>
+                        {% endif %}
+                    {% endfor %}
+                </td>
                 
 
 
