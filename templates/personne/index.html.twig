@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}Personne index{% endblock %}
 
 {% block body %}
+{% include '/index.html' %}
     <h1>Personne index</h1>
 
     <table class="table">
@@ -14,7 +16,7 @@
                 <th>Entreprise</th>
                 <th>Telephone</th>
                 <th>Email</th>
-                <th>Actions</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -23,7 +25,7 @@
                 <td>{{ personne.id }}</td>
                 <td>{{ personne.PERNOM }}</td>
                 <td>{{ personne.PERPRENOM }}</td>
-                <td>{{ personne.entreprise.ENTNOM ?? 'N/A' }}</td> 
+                <td>{{ personne.entreprise.ENTNOM ?? 'Aucune entreprise associée' }}</td> 
                 <td>{{ personne.telephone }}</td>
                 <td>{{ personne.email }}</td>
                 <td>
@@ -40,6 +42,5 @@
     </table>
 
     <a href="{{ path('personne_new') }}">Ajouter une personne</a>
-    <a href="{{ path('personne_index') }}">Back to list</a>
 
 {% endblock %}
