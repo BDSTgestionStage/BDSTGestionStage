@@ -10,7 +10,9 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Response;
-
+use App\Entity\Utilisateur;
+use Symfony\Component\Console\Output\ConsoleOutput;
+use Symfony\Component\Console\Formatter\OutputFormatter;
 class LoginController extends AbstractController
 {
     private $session;
@@ -49,12 +51,15 @@ class LoginController extends AbstractController
             }           
             // Créer un cookie pour enregistrer la connexion de l'utilisateur
             $cookieid = new Cookie('user_id', $identifiant->getId(), time() + 3600 * 24 * 7);
-            $cookiemdp = new Cookie('user_mdp', $identifiant->getUTIPassword(), time() + 3600 * 24 * 7); // Cookie valable pendant 7 jours
+            $cookiemdp = new Cookie('user_token', $identifiant->getUTIPassword(), time() + 3600 * 24 * 7); // Cookie valable pendant 7 jours
+            $cookieconnected = new Cookie('connected', true, time() + 3600 * 24 * 7);
             
 
             // Ajouter le cookie à la réponse
             $response = new Response();
-            $response->headers->setCookie($cookieid, $cookiemdp);
+            $response->headers->setCookie($cookieid);
+            $response->headers->setCookie($cookiemdp);
+            $response->headers->setCookie($cookieconnected);
             $response->send();
             $this->addFlash('success', 'Connexion réussie.');
             
