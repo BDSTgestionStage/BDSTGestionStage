@@ -1,0 +1,31 @@
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{% include '/index.html' %}
+    <h1>Résultats de recherche</h1>
+
+    <br><br>
+    
+   
+
+    {% if results is empty %}
+        <p>Aucune entreprise trouvée.</p>
+    {% else %}
+        <ul>
+            {% for entreprise in results %}
+                <li>
+                    <strong>Nom :</strong> {{ entreprise.getENTNOM() }}<br>
+                    <strong>Ville :</strong> {{ entreprise.getENTVILLE() }}<br>
+                    <strong>Pays :</strong> {{ entreprise.getENTPAYS() ?: 'Non spécifié' }}<br>
+                    <strong>Spécialité :</strong> {{ entreprise.getENTSPECIALITE() ?: 'Non spécifiée' }}<br>
+                    <strong>Adresse :</strong> {{ entreprise.getENTADRESSE() }}<br>
+                    <strong>Code Postal :</strong> {{ entreprise.getENTCP() }}<br>
+                    <strong>Site Web :</strong> {{ entreprise.getSite() ?: 'Non spécifié' }}
+                    <br><br>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+        <a href="{{ path('liste') }}" class="btn btn-primary">Retour à la liste</a>
+{% endblock %}

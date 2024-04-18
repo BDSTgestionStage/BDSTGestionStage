@@ -23,6 +23,11 @@
     }
 </style>
 
+<form action="{{ path('search') }}" method="get">
+    <input type="search" name="q" placeholder="Entrez votre recherche...">
+    <button type="submit">Rechercher</button>
+</form>
+<br>
 <table>
     <thead>
         <tr>
