@@ -47,4 +47,13 @@ class BDST_Liste extends AbstractController
             'etudiantsParEntreprise' => $etudiantsParEntreprise,
         ]);
     }
+
+    /**
+     * @Route("/stage", name="stage")
+     */
+    public function stage(EntityManagerInterface $entityManager)
+    {
+        return $this->render('stage.php', [
+        ]);
+    }
 }

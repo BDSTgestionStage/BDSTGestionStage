@@ -74,11 +74,12 @@ h2{
     font-style: normal;
 }
 
-.page{
+*{
     background-image: url(./image/bg.png);
     background-size:contain;
     background-position: bottom right;
     background-repeat: no-repeat;
+    background-color: #000;
 }
 
 
