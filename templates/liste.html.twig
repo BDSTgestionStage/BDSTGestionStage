@@ -1,8 +1,14 @@
-
 {% block body %}{% include 'index.html' %}{% endblock %} 
 <h1>Stages</h1>
 <div class="demiwhite">
 <table class="stagetable scrollable-table">
+
+<form action="{{ path('search') }}" method="get">
+    <input type="search" name="q" placeholder="Entrez votre recherche...">
+    <button type="submit">Rechercher</button>
+</form>
+<br>
+<table>
     <thead>
         <tr>
             <th></th>
@@ -16,7 +22,7 @@
             <th>Jury</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="tliste">
         {% for entreprise in entreprises %}
             <tr>
                 <td><a class="lock" href="./stage?id={{entreprise.id}}"><i class="fa-solid fa-eye"></i></a></td>

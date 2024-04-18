@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Personne{% endblock %}
+
+{% block body %}
+{% include '/index.html' %}
+    <h1>Create new Personne</h1>
+
+    {{ form_start(form) }}
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            {{ form_row(form.PER_NOM, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group col-md-3">
+            {{ form_row(form.PER_PRENOM, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group"> 
+        {{ form_widget(form.entreprise, {'attr': {'class': 'form-control'}}) }} 
+        </div>
+        <div class="form-group col-md-3">
+            {{ form_row(form.telephone, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group col-md-3">
+            {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('personne_index') }}">Back to list</a>
+{% endblock %}
