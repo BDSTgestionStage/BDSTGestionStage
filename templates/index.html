@@ -101,8 +101,9 @@ h2{
 .page{
     background-image: url(./image/bg.png);
     background-size:contain;
-    background-position: bottom right;
+    background-position: top right;
     background-repeat: no-repeat;
+    background-size: 300px;
 }
 .demiwhite{
   background-color: rgba(255, 255, 255, 0.93);
@@ -201,6 +202,10 @@ h2{
   .edit{
     background-color: #e79600;
     color: #fff;
+  }  
+  .exit{
+    background-color: #03949B;
+    color: #fff;
   }
   .del{
     background-color: #e70000;
@@ -267,4 +272,64 @@ table.stagetable {
 .demiwhite{
   border: #0007 solid 5px ;
 }
+form.sch{
+  width: 100%;
+  height: 50px;
+  margin: 0;
+  background-color: #fff;
+  border-radius: 50px;
+  padding: 0;
+  justify-content: space-between;
+  margin:  50px 0;
+  border: #0007 solid 5px ;
+  display: flex;
+  font-family: "Roboto", sans-serif;
+}
+input.sch{
+  width: 800px;
+  margin: 0;
+  height: 50px;
+  border-radius: 50px ;
+  border: none;
+  padding-left: 30px;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+}
+button.sch{
+  width: 100px;
+  height: 50px;
+  border-radius: 50px;
+  border: none;
+  background: rgb(79,48,146);
+  background: linear-gradient(235deg, rgba(3, 148, 155) 0%, rgba(97,9,121,1) 100%);
+  transition: 0.5s;
+}
+button.sch:hover{
+  cursor: pointer;
+  background: linear-gradient(235deg, rgba(3, 148, 155) 0%, rgba(97,9,121,1) 100%);
+  width: 100px;
+  transform: rotate3d(1,0, 2, 10deg) scale(120%);
+  transition: 0.5s;
+}
+button.sch:active{
+  cursor: pointer;
+  background: linear-gradient(235deg, rgba(3, 148, 155) 0%, rgba(97,9,121,1) 100%);
+  width: 100px;
+  transform: rotate3d(1,0, 2, 20deg) scale(200%);
+  transition: 0.2s;
+}
+button.sch i{
+  color: #fff;
+
+}
+.result{
+  list-style: none;
+  padding: 30px;
+  margin: 30px;
+  border-radius: 20px;
+}
+.result:nth-child(2n+2){
+  background-color: #0003;
+}
+
 </style>

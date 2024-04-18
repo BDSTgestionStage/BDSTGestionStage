@@ -1,14 +1,11 @@
 {% block body %}{% include 'index.html' %}{% endblock %} 
 <h1>Stages</h1>
+<form class="sch" action="{{ path('search') }}" method="get">
+    <input class="sch" type="search" name="q" placeholder="Entrez votre recherche...">
+    <button class="sch" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+</form>
 <div class="demiwhite">
 <table class="stagetable scrollable-table">
-
-<form action="{{ path('search') }}" method="get">
-    <input type="search" name="q" placeholder="Entrez votre recherche...">
-    <button type="submit">Rechercher</button>
-</form>
-<br>
-<table>
     <thead>
         <tr>
             <th></th>
