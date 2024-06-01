@@ -39,6 +39,34 @@ class EntrepriseRepository extends ServiceEntityRepository
         }
     }
 
+    public function search(Request $request)
+    {
+        $searchTerm = $request->query->get('q', '');
+
+        if (!empty($searchTerm)) {
+            $repository = $this->getDoctrine()->getRepository(Entreprise::class);
+            $results = $repository->searchByTerm($searchTerm);
+        } else {
+            $results = [];
+        }
+
+        return $this->render('search/results.html.twig', ['results' => $results]);
+    }
+
+    public function searchByTerm($term)
+    {
+        $qb = $this->createQueryBuilder('e');
+
+        $qb->where('e.ENT_NOM LIKE :term')
+           ->orWhere('e.ENT_VILLE LIKE :term')
+           ->orWhere('e.ENT_PAYS LIKE :term')
+           ->orWhere('e.ENT_SPECIALITE LIKE :term')
+           ->setParameter('term', '%' . $term . '%')
+           ->orderBy('e.ENT_NOM', 'ASC');
+
+        return $qb->getQuery()->getResult();
+    }
+
 //    /**
 //     * @return Entreprise[] Returns an array of Entreprise objects
 //     */

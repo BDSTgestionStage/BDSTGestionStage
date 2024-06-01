@@ -11,6 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Service\CookieService;
 
+
 class BDST_Liste extends AbstractController
 {
     private $CookieService;
@@ -63,5 +64,22 @@ class BDST_Liste extends AbstractController
             'entreprises' => $entreprises,
             'etudiantsParEntreprise' => $etudiantsParEntreprise,
         ]);
+    }
+
+        /**
+     * @Route("/search", name="search")
+     */
+    public function search(Request $request)
+    {
+        $searchTerm = $request->query->get('q', '');
+
+        if (!empty($searchTerm)) {
+            $repository = $this->getDoctrine()->getRepository(Entreprise::class);
+            $results = $repository->searchByTerm($searchTerm);
+        } else {
+            $results = [];
+        }
+
+        return $this->render('search/results.html.twig', ['results' => $results]);
     }
 }

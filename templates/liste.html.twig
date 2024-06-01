@@ -1,7 +1,11 @@
+{% block head %}{% include 'index.html' %}{% endblock %} 
+
 <style>
+
     table {
         width: 100%;
         border-collapse: collapse;
+        background-color: #ffffff;
     }
 
     th, td {
@@ -19,6 +23,11 @@
     }
 </style>
 
+<form action="{{ path('search') }}" method="get">
+    <input type="search" name="q" placeholder="Entrez votre recherche...">
+    <button type="submit">Rechercher</button>
+</form>
+<br>
 <table>
     <thead>
         <tr>
@@ -32,7 +41,7 @@
             <th>Jury</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="tliste">
         {% for entreprise in entreprises %}
             <tr>
                 <td>{{ entreprise.getENTNOM() }}</td>
