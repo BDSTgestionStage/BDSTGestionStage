@@ -22,6 +22,7 @@ class BDST_Liste extends AbstractController
     /**
      * @Route("/liste", name="liste")
      */
+
     public function liste(EntityManagerInterface $entityManager, Request $request): Response
     {
         $utilisateur = $this->CookieService->CheckCookieService($request);
@@ -29,6 +30,9 @@ class BDST_Liste extends AbstractController
             
             return $this->redirectToRoute('app_login');
         }
+      
+    public function liste(EntityManagerInterface $entityManager): Response
+    {
         // Récupérer toutes les entreprises
         $entreprises = $entityManager->getRepository(Entreprise::class)->findAll();
 
