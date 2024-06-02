@@ -74,4 +74,20 @@ class LoginController extends AbstractController
         // Afficher le formulaire
         return $this->render('BDST_PageConnexion.html.twig');
     }
+    // deconnection 
+    /**
+     * @Route("/logout", name="app_logout")
+     */
+    public function logout()
+    {
+        // Supprimer les cookies
+        $response = new Response();
+        $response->headers->clearCookie('user_id');
+        $response->headers->clearCookie('user_token');
+        $response->headers->clearCookie('connected');
+        $response->send();
+
+        // Rediriger vers la page de connexion
+        return $this->redirectToRoute('app_login');
+    }
 }
