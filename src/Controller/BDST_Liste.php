@@ -8,15 +8,29 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request; 
+use Symfony\Component\HttpFoundation\Request;
+use App\Service\CookieService;
+
 
 class BDST_Liste extends AbstractController
 {
+    private $CookieService;
+
+    public function __construct(CookieService $CookieService)
+    {
+        $this->CookieService = $CookieService;
+    }
     /**
      * @Route("/liste", name="liste")
      */
-    public function liste(EntityManagerInterface $entityManager): Response
+
+    public function liste(EntityManagerInterface $entityManager, Request $request): Response
     {
+        $utilisateur = $this->CookieService->CheckCookieService($request);
+        if (!$utilisateur) {
+            
+            return $this->redirectToRoute('app_login');
+        }
         // Récupérer toutes les entreprises
         $entreprises = $entityManager->getRepository(Entreprise::class)->findAll();
 
