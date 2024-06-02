@@ -27,11 +27,11 @@ class Utilisateur
      */
     private $UTI_password;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Role::class)
-     * @ORM\JoinColumn(name="role_id", referencedColumnName="id")
-     */
-    private $role;
+   /**
+ * @ORM\ManyToOne(targetEntity=Role::class)
+ * @ORM\JoinColumn(nullable=false)
+ */
+private $role;
 
     public function getId(): ?int
     {
