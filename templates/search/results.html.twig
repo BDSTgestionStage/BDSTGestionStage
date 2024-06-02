@@ -14,18 +14,19 @@
     {% else %}
         <ul>
             {% for entreprise in results %}
-                <li>
+                <li class="result">
                     <strong>Nom :</strong> {{ entreprise.getENTNOM() }}<br>
                     <strong>Ville :</strong> {{ entreprise.getENTVILLE() }}<br>
                     <strong>Pays :</strong> {{ entreprise.getENTPAYS() ?: 'Non spécifié' }}<br>
                     <strong>Spécialité :</strong> {{ entreprise.getENTSPECIALITE() ?: 'Non spécifiée' }}<br>
                     <strong>Adresse :</strong> {{ entreprise.getENTADRESSE() }}<br>
                     <strong>Code Postal :</strong> {{ entreprise.getENTCP() }}<br>
-                    <strong>Site Web :</strong> {{ entreprise.getSite() ?: 'Non spécifié' }}
-                    <br><br>
+                    <strong>Site Web :</strong> {{ entreprise.getSite() ?: 'Non spécifié' }}<br><br><br>
+
+                    <a class="lock" href="{{ path('app_entreprise_show', {'id': entreprise.id}) }}"><i class="fa-solid fa-eye"></i></a>
                 </li>
             {% endfor %}
         </ul>
     {% endif %}
-        <a href="{{ path('liste') }}" class="btn btn-primary">Retour à la liste</a>
+        <a href="{{ path('liste') }}" class="btn btn-primary "><div class="new"><i class="fa-solid fa-person-walking-arrow-right"></i></div> </a>
 {% endblock %}

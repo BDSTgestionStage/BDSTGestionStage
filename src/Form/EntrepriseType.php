@@ -34,7 +34,6 @@ class EntrepriseType extends AbstractType
             ->add('SITE', TextType::class, [
                 'label' => 'Site'
             ])
-
         ;
     }
 

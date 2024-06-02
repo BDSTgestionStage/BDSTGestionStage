@@ -10,15 +10,17 @@
 <div>
     <nav>
         <a href="#"><img src="../image/Logo.png" alt=""></a>
-        <ul><a href=/liste#">Stages</a></ul>
+        <ul><a href="/liste/">Stages</a></ul>
         <ul><a href="/personne/">Personnes</a></ul>
-        <ul><a href="/entreprise">Entreprise</a></ul>
-        <ul><a href="/login"><i class="fa-solid fa-right-to-bracket"></i> Connexion</a></ul>
+        <ul><a href="/entreprise/">Entreprises</a></ul>
+        <ul><a href="/login/"><i class="fa-solid fa-right-to-bracket"></i> Connexion</a></ul>
         <ul><a href="#"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</a></ul>
     </nav>
 </div>
 <div class="bord">
 <div class="page">
+
+
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Francois+One&family=Roboto+Slab:wght@100;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Francois+One&family=Roboto+Slab:wght@100;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
@@ -99,10 +101,13 @@ h2{
 .page{
     background-image: url(./image/bg.png);
     background-size:contain;
-    background-position: bottom right;
+    background-position: top right;
     background-repeat: no-repeat;
+    background-size: 300px;
 }
-
+.demiwhite{
+  background-color: rgba(255, 255, 255, 0.93);
+}
 
 .login-form {
     display: flex;
@@ -157,19 +162,24 @@ h2{
   table td, table th{
     border-right: solid 1px #00000097;
     margin: 0;
-
+    text-align: center;
   }
-
+  td:nth-last-child(1){
+    width: 30%;
+  }
   table tr:nth-child(2n+2){
     background-color: #33343823;
   }
   table td:nth-child(1){
     text-align: center;
   }
-  table td:last-child, table th:last-child{
+  table td:last-child{
     text-align: right;
     border: none;
     padding-right: 40px;
+  }
+  table th:last-child{
+    border: none;
   }
 
   .lock, .edit, .del, .return, .inte{
@@ -191,6 +201,10 @@ h2{
   }
   .edit{
     background-color: #e79600;
+    color: #fff;
+  }  
+  .exit{
+    background-color: #03949B;
     color: #fff;
   }
   .del{
@@ -230,6 +244,93 @@ h2{
     width: 10%;
     margin: 30px 0;
   }
+.stagetable {
+    overflow-x: auto; /* Activer le défilement horizontal */
+    overflow-y: hidden; /* Désactiver le défilement vertical */
+    width: 100%; /* Ajustez la largeur selon vos besoins */
+    white-space: nowrap; /* Empêcher le retour à la ligne des éléments du tableau */
+}
+
+.stagetable {
+  overflow-x: auto;  /* Change from visible to auto */
+  width: 100%; /* Adjust the width according to your needs */
+  white-space: nowrap;
+  scroll-snap-type: x mandatory;
+  font-family: "Roboto", sans-serif;
+
+}
+table.stagetable {
+  width: 120%;
+}
+.demiwhite{
+  overflow-x: scroll;
+}
+.stagetable td, .stagetable th{
+  font-family: "Roboto", sans-serif;
+  padding: 20px;
+}
+.demiwhite{
+  border: #0007 solid 5px ;
+}
+form.sch{
+  width: 100%;
+  height: 50px;
+  margin: 0;
+  background-color: #fff;
+  border-radius: 50px;
+  padding: 0;
+  justify-content: space-between;
+  margin:  50px 0;
+  border: #0007 solid 5px ;
+  display: flex;
+  font-family: "Roboto", sans-serif;
+}
+input.sch{
+  width: 800px;
+  margin: 0;
+  height: 50px;
+  border-radius: 50px ;
+  border: none;
+  padding-left: 30px;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+}
+button.sch{
+  width: 100px;
+  height: 50px;
+  border-radius: 50px;
+  border: none;
+  background: rgb(79,48,146);
+  background: linear-gradient(235deg, rgba(3, 148, 155) 0%, rgba(97,9,121,1) 100%);
+  transition: 0.5s;
+}
+button.sch:hover{
+  cursor: pointer;
+  background: linear-gradient(235deg, rgba(3, 148, 155) 0%, rgba(97,9,121,1) 100%);
+  width: 100px;
+  transform: rotate3d(1,0, 2, 10deg) scale(120%);
+  transition: 0.5s;
+}
+button.sch:active{
+  cursor: pointer;
+  background: linear-gradient(235deg, rgba(3, 148, 155) 0%, rgba(97,9,121,1) 100%);
+  width: 100px;
+  transform: rotate3d(1,0, 2, 20deg) scale(200%);
+  transition: 0.2s;
+}
+button.sch i{
+  color: #fff;
+
+}
+.result{
+  list-style: none;
+  padding: 30px;
+  margin: 30px;
+  border-radius: 20px;
+}
+.result:nth-child(2n+2){
+  background-color: #0003;
+}
   table td{
     padding: 20px 10px ;
   }

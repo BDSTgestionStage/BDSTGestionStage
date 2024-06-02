@@ -62,7 +62,6 @@ class BDST_Liste extends AbstractController
             'etudiantsParEntreprise' => $etudiantsParEntreprise,
         ]);
     }
-
         /**
      * @Route("/search", name="search")
      */
