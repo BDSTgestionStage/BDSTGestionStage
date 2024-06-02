@@ -1,18 +1,17 @@
 {% extends 'base.html.twig' %}
 
 
-{% block title %}Personne index{% endblock %}
+{% block title %}Personne{% endblock %}
 
 {% block body %}
 {% include '/index.html.twig' %}
-    <h1>Personne index</h1>
+    <h1>Personne</h1>
+            <tr><div class="newdiv"><a class="new" href="{{ path('personne_new') }}"><i class="fa-solid fa-plus"></i></a></div></tr>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>PER_NOM</th>
-                <th>PER_PRENOM</th>
+                <th>Nom et prenom</th>
                 <th>Entreprise</th>
                 <th>Telephone</th>
                 <th>Email</th>
@@ -22,15 +21,14 @@
         <tbody>
         {% for personne in personnes %}
             <tr>
-                <td>{{ personne.id }}</td>
-                <td>{{ personne.PERNOM }}</td>
-                <td>{{ personne.PERPRENOM }}</td>
+                <td>{{ personne.PERNOM|upper }}
+                {{ personne.PERPRENOM }}</td>
                 <td>{{ personne.entreprise.ENTNOM ?? 'Aucune entreprise associée' }}</td> 
                 <td>{{ personne.telephone }}</td>
                 <td>{{ personne.email }}</td>
                 <td>
+                    <a class="edit" href="{{ path('personne_edit', {'id': personne.id}) }}"><i class="fa-solid fa-pen"></i></a>
                     
-                    <a href="{{ path('personne_edit', {'id': personne.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -41,6 +39,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('personne_new') }}">Ajouter une personne</a>
 
 {% endblock %}
