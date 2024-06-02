@@ -3,7 +3,7 @@
 {% block title %}Modifier {{ entreprise.ENTNOM }}{% endblock %}
 
 {% block body %}
-{% include '/index.html' %}
+{% include '/index.html.twig' %}
     <h1>Modifier {{ entreprise.ENTNOM }}</h1>
 
     {{ include('entreprise/_form.html.twig', {'button_label': 'Update'}) }}
