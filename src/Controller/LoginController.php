@@ -22,7 +22,7 @@ class LoginController extends AbstractController
     {
         $this->session = $session;
     }
-
+    
     /**
      * @Route("/login", name="app_login")
      */
@@ -38,7 +38,7 @@ class LoginController extends AbstractController
 
             if (!$identifiant) {
                 $this->addFlash('error', 'Utilisateur introuvable.');
-                return $this->redirectToRoute('login');
+                return $this->redirectToRoute('app_login');
             }
 
             // Hacher le mot de passe soumis par l'utilisateur avec SHA-256 pour la comparaison
@@ -73,5 +73,21 @@ class LoginController extends AbstractController
 
         // Afficher le formulaire
         return $this->render('BDST_PageConnexion.html.twig');
+    }
+    // deconnection 
+    /**
+     * @Route("/logout", name="app_logout")
+     */
+    public function logout()
+    {
+        // Supprimer les cookies
+        $response = new Response();
+        $response->headers->clearCookie('user_id');
+        $response->headers->clearCookie('user_token');
+        $response->headers->clearCookie('connected');
+        $response->send();
+
+        // Rediriger vers la page de connexion
+        return $this->redirectToRoute('app_login');
     }
 }
