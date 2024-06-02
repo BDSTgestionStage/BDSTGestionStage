@@ -9,12 +9,20 @@
 </head>
 <div>
     <nav>
-        <a href="#"><img src="../public/image/Logo.png" alt=""></a>
-        <ul><a href="#">Stages</a></ul>
-        <ul><a href="/eleve/">Éleve</a></ul>
-        <ul><a href="/entreprise/">Entreprise</a></ul>
-        <ul><a href="#"><i class="fa-solid fa-right-to-bracket"></i> Connexion</a></ul>
-        <ul><a href="#"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</a></ul>
+        <a href="#"><img src="../image/Logo.png" alt=""></a>
+        {# Si utilisateur connecté, afficher #}
+        {% if app.request.cookies.get('connected') is defined and app.request.cookies.get('connected') %}
+        <ul><a href="/liste">Stages</a></ul>
+        <ul><a href="/personne">Personnes</a></ul>
+        <ul><a href="/entreprise">Entreprise</a></ul>
+        {# Si utilisateur pas connecté, afficher les liens suivants #}
+        {% else %}
+        <ul><a href="/login"><i class="fa-solid fa-right-to-bracket"></i> Connexion</a></ul>
+        {% endif %}
+        {% if app.request.cookies.get('connected') is defined and app.request.cookies.get('connected') %}
+        {# Si utilisateur connecté, afficher #}
+        <ul><a href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</a></ul>
+         {% endif %}
     </nav>
 </div>
 <div class="bord">
@@ -163,13 +171,16 @@ h2{
   table tr:nth-child(2n+2){
     background-color: #33343823;
   }
-  table td:nth-child(1), table td:nth-child(5){
+  table td:nth-child(1){
     text-align: center;
   }
-  table td:nth-child(5), table th:nth-child(5){
+  table td:last-child, table th:last-child{
+    text-align: right;
     border: none;
+    padding-right: 40px;
   }
-  .lock, .edit, .del, .return {
+
+  .lock, .edit, .del, .return, .inte{
     text-align: center;
     background-color: #000;
     padding: 10px;
@@ -178,7 +189,7 @@ h2{
     height: 25px;
     width: 25px;
   }
-  .lock i, .edit i, .del i, .new i, .return i{
+  .lock i, .edit i, .del i, .new i, .return i, .inte i{
     height: 25px;
     width: 25px;
   }
@@ -196,6 +207,10 @@ h2{
   }
   .return{
     background-color: #03949B;
+    color: #fff;
+  }
+  .inte{
+    background-color: #001aff;
     color: #fff;
   }
   .new{
@@ -222,5 +237,19 @@ h2{
   .editbtn{
     width: 10%;
     margin: 30px 0;
+  }
+  table td{
+    padding: 20px 10px ;
+  }
+  #inscription_submit{
+    margin-top: 40px;
+    width: 20%;
+    padding: 10px 20px;
+    background-color: #03949B; /* Adjust to match your primary color */
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
   }
 </style>

@@ -9,17 +9,31 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\CookieService;
+
 
 /**
  * @Route("/entreprise")
  */
 class EntrepriseController extends AbstractController
 {
+    private $CookieService;
+
+    public function __construct(CookieService $CookieService)
+    {
+        $this->CookieService = $CookieService;
+    }
+
     /**
      * @Route("/", name="app_entreprise_index", methods={"GET"})
      */
-    public function index(EntrepriseRepository $entrepriseRepository): Response
+    public function index(EntrepriseRepository $entrepriseRepository, Request $request): Response
     {
+        $utilisateur = $this->CookieService->CheckCookieService($request);
+        if (!$utilisateur) {
+            
+            return $this->redirectToRoute('app_login');
+        }
         return $this->render('entreprise/index.html.twig', [
             'entreprises' => $entrepriseRepository->findAll(),
         ]);
