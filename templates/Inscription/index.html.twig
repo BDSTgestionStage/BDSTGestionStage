@@ -2,9 +2,12 @@
 
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription{% endblock %}
 
+{% block title %}Inscription{% endblock %}
 {% block body %}
+
+{% include '/index.html' %}
+
     <h1>Inscription</h1>
 
     {{ form_start(form) }}
