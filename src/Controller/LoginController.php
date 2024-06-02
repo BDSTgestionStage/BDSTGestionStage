@@ -22,7 +22,7 @@ class LoginController extends AbstractController
     {
         $this->session = $session;
     }
-
+    
     /**
      * @Route("/login", name="app_login")
      */
@@ -38,7 +38,7 @@ class LoginController extends AbstractController
 
             if (!$identifiant) {
                 $this->addFlash('error', 'Utilisateur introuvable.');
-                return $this->redirectToRoute('login');
+                return $this->redirectToRoute('app_login');
             }
 
             // Hacher le mot de passe soumis par l'utilisateur avec SHA-256 pour la comparaison
