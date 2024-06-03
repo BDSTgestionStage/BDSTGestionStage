@@ -130,3 +130,10 @@ h2{
   .login-btn:hover {
     background-color: #03949B; /* Slightly darker shade on hover */
   }
+  .sch{
+    background-color: #000;
+    
+  }
+  form.sch{
+    width: 100%;
+}

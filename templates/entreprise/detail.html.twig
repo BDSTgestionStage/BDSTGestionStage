@@ -1,64 +1,60 @@
+{% block head %}{% include 'index.html.twig' %}{% endblock %} 
+{# templates/entreprise/detail.html.twig #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Détails de l'Entreprise</title>
+</head>
+<body>
+    <h1>Détails de l'Entreprise</h1>
 
-{% block body %}{% include 'index.html' %}{% endblock %} 
-<h1>Stages</h1>
-<div class="demiwhite">
-<table class="stagetable scrollable-table">
-    <thead>
-        <tr>
-            <th></th>
-            <th>Entreprise</th>
-            <th>Ville</th>
-            <th>Activité</th>
-            <th>Tuteur</th>
-            <th>Personne à contacter pour envoi CV</th>
-            <th>Profils</th>
-            <th>Etudiants</th>
-            <th>Jury</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for entreprise in entreprises %}
-            <tr>
-                <td><a class="lock" href="./stage.php?id={{entreprise.id}}"><i class="fa-solid fa-eye"></i></a></td>
-                <td>{{ entreprise.getENTNOM() }}</td>
-                <td>{{ entreprise.getENTVILLE() }}</td>
-                <td>{{ entreprise.getENTSPECIALITE() }}</td>
-                <td>
+    <h2>Entreprise</h2>
+    <p>{{ entreprise.ENTNOM }}</p>
+  <br>
+
+    <h3>Ville</h3>
+    <p>{{ entreprise.ENTVILLE }}</p>
+  <br>
+
+    <h3>Activité</h3>
+    <p>{{ entreprise.ENTSPECIALITE }}</p>
+  <br>
+    <h3>Tuteur</h3>
+
                     {% for personne in entreprise.getPersonnes() %}
                         {% if personne.getProfil() and personne.getProfil().getTUTACCORD() %}
                             {{ personne.getPERNOM() }} {{ personne.getPERPRENOM() }}<br>
                         {% endif %}
                     {% endfor %}
-                </td>
-                <td>
+  <br>
+    <h3>Personne à contacter pour envoi CV</h3>
+
                     {% for personne in entreprise.getPersonnes() %}
                         {% if personne.getProfil() and personne.getProfil().getENVACCORD() %}
                             {{ personne.getPERNOM() }} {{ personne.getPERPRENOM() }}<br>
                         {% endif %}
                     {% endfor %}
-                </td>
-                <td>
+  <br>
+    <h3>Profils</h3>
                     {% for formation in entreprise.getFormations() %}
                         {{ formation.getForLibelle() }}
                         {% if not loop.last %}, {% endif %}
                     {% endfor %}
-                </td>
-                <td>
+  <br>
+  <br>
+    <h3>Etudiants</h3>
                     {% for etudiant in etudiantsParEntreprise[entreprise.getId()] %}
                         {{ etudiant.getPERNOM() }} {{ etudiant.getPERPRENOM() }}
                         {% if not loop.last %}, {% endif %}
                     {% endfor %}
-                </td>
-                <td>
+  <br>
+  <br>
+    <h3>Jury</h3>
                     {% for personne in entreprise.getPersonnes() %}
                         {% if personne.getProfil() and personne.getProfil().getJurAnnee() %}
                             {{ personne.getPERNOM() }} {{ personne.getPERPRENOM() }} ({{ personne.getProfil().getJurAnnee() }})<br>
                         {% endif %}
                     {% endfor %}
-                </td>
-                
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
-</div>
+</body>
+</html>

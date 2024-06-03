@@ -20,6 +20,36 @@ class BDST_Liste extends AbstractController
     {
         $this->CookieService = $CookieService;
     }
+
+    /**
+     * @Route("/entreprise/{id}", name="entreprise_detail")
+     */
+    public function detail($id, EntityManagerInterface $entityManager): Response
+    {
+        $entreprise = $entityManager->getRepository(Entreprise::class)->find($id);
+        $etudiantsParEntreprise = [];
+        if (!$entreprise) {
+            throw $this->createNotFoundException('L\'entreprise n\'existe pas.');
+        }
+        $personnes = $entreprise->getPersonnes();
+
+        // Filtrer uniquement les personnes qui sont des étudiants
+        $etudiants = [];
+        foreach ($personnes as $personne) {
+            // Vérifier si la personne est un étudiant en recherchant son ID dans la table Etudiant
+            $etudiant = $entityManager->getRepository(Etudiant::class)->findOneBy(['per_id' => $personne->getId()]);
+            if ($etudiant) {
+                $etudiants[] = $personne;
+            }
+        }
+
+        // Stocker les étudiants associés à cette entreprise dans le tableau
+        $etudiantsParEntreprise[$entreprise->getId()] = $etudiants;
+        return $this->render('entreprise/detail.html.twig', [
+            'entreprise' => $entreprise,
+            'etudiantsParEntreprise' => $etudiantsParEntreprise,
+        ]);
+    }
     /**
      * @Route("/liste", name="liste")
      */

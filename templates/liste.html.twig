@@ -47,7 +47,7 @@
     <tbody class="tliste">
         {% for entreprise in entreprises %}
             <tr>
-                <td><a class="lock" href="./stage?id={{entreprise.id}}"><i class="fa-solid fa-eye"></i></a></td>
+                <td><a class="lock" href="./entreprise/{{entreprise.id}}"><i class="fa-solid fa-eye"></i></a></td>
                 <td>{{ entreprise.getENTNOM() }}</td>
                 <td>{{ entreprise.getENTVILLE() }}</td>
                 <td>{{ entreprise.getENTSPECIALITE() }}</td>

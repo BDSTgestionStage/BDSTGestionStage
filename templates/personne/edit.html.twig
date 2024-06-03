@@ -1,16 +1,19 @@
 {% extends 'base.html.twig' %}
 
 
-{% block title %}Edit Personne{% endblock %}
+{% block title %}Modifier Personne{% endblock %}
 
 {% block body %}
 {% include '/index.html.twig' %}
-    <h1>Edit Personne</h1>
+    <h1>Modifier personne</h1>
 
     {{ include('personne/_form.html.twig', {'button_label': 'Update'}) }}
+<div class="tripbtn">
 
-    <a href="{{ path('personne_index') }}">Back to list</a>
+    <button class="btn btns"><a class="return" href="{{ path('personne_index') }}"><i class="fa-solid fa-house"></i></a>
+</i></a>
+    {# Utilisez le nom de route correct pour la suppression #}    
+    <div class="sousbtn">    {{ include('personne/_delete_form.html.twig', {'id': personne.id}) }}
+</div>
 
-    {# Utilisez le nom de route correct pour la suppression #}
-    {{ include('personne/_delete_form.html.twig', {'id': personne.id}) }}
 {% endblock %}
