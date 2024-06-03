@@ -11,18 +11,21 @@
     <nav>
         <a href="#"><img src="../image/Logo.png" alt=""></a>
         {# Si utilisateur connecté, afficher #}
-        {% if app.request.cookies.get('connected') is defined and app.request.cookies.get('connected') %}
-        <ul><a href="/liste">Stages</a></ul>
-        <ul><a href="/personne">Personnes</a></ul>
-        <ul><a href="/entreprise">Entreprise</a></ul>
-        {# Si utilisateur pas connecté, afficher les liens suivants #}
-        {% else %}
-        <ul><a href="/login"><i class="fa-solid fa-right-to-bracket"></i> Connexion</a></ul>
-        {% endif %}
-        {% if app.request.cookies.get('connected') is defined and app.request.cookies.get('connected') %}
-        {# Si utilisateur connecté, afficher #}
-        <ul><a href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</a></ul>
-         {% endif %}
+    
+          {% if app.request.cookies.get('user_role') is defined %}
+              {% if app.request.cookies.get('user_role') == 'Administrateur' %}
+                  <ul><a href="/liste">Stages</a></ul>
+                  <ul><a href="/personne">Personnes</a></ul>
+                  <ul><a href="/entreprise">Entreprise</a></ul>
+              {% else %}
+                  <ul><a href="/liste">Stages</a></ul>
+              {% endif %}
+          {% else %}
+              <ul><a href="/login"><i class="fa-solid fa-right-to-bracket"></i> Connexion</a></ul>
+          {% endif %}
+          {% if app.request.cookies.get('connected') is defined %}
+              <ul><a href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</a></ul>
+          {% endif %}
     </nav>
 </div>
 <div class="bord">
